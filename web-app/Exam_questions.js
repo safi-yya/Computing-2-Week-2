@@ -140,7 +140,7 @@ Exam_questions.q7.even_digits = function (a, b) {
  * @returns {string} The constructed question.
  * @example age_question("Pietro", 32) // "Hello Pietro, is your age 32?"
  */
-Exam_questions.q8.age_question = function (name = "Andrea", age = 19) {
+Exam_questions.q8.age_question = function (name = "Kimi Antonelli", age = 19) {
     return `Hello ${name}, is your age ${age}?`;
 };
 
