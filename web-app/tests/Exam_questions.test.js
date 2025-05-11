@@ -30,7 +30,7 @@ describe("Question 1", function () {
         }
     );
 
-    it("The empty list retuns undefined", function () {
+    it("The empty list returns undefined", function () {
         const input = [];
         const result = shortest_word(input);
         const expected = undefined;
@@ -311,7 +311,17 @@ describe("Question 6", function () {
         "that is not included in the orignal string, " +
         "returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+            const input1 = "hello";
+            const input2 = "hellon";
+            const result = missing_character(input1, input2);
+            const expected = "n";
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input1} and ${input2}` +
+                    `${JSON.stringify(result)} was returned,` +
+                    `when ${expected} was expected.`
+                );
+            }
         }
     );
 
@@ -322,17 +332,35 @@ describe("Question 6", function () {
         "that is included in the orignal string, " +
         "returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+            const input1 = "hello";
+            const input2 = "hellol";
+            const result = missing_character(input1, input2);
+            const expected = "l";
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input1} and ${input2}` +
+                    `${JSON.stringify(result)} was returned,` +
+                    `when ${expected} was expected.`
+                );
+            }
         }
     );
 
     it(
-        "Given a string and a character, " +
-        "appending that character to the string and shuffling" +
-        "then passing the original and new string to missing_character",
-        "returns that character",
+        "Given a string and a character, appending that character to the string and shuffling" +
+        "then passing the original and new string to missing_character returns that character",
         function () {
-            throw new Error("Implement this test yourself.");
+            const input1 = "hello";
+            const input2 = "lenhlo";
+            const result = missing_character(input1, input2);
+            const expected = "n";
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input1} and ${input2}` +
+                    `${JSON.stringify(result)} was returned,` +
+                    `when ${expected} was expected.`
+                );
+            }
         }
     );
 
@@ -340,7 +368,17 @@ describe("Question 6", function () {
         "Given two strings with lengths that differ by not exactly 1," +
         "undefined is always returned",
         function () {
-            throw new Error("Implement this test yourself.");
+            const input1 = "hello";
+            const input2 = "lenhlol";
+            const result = missing_character(input1, input2);
+            const expected = undefined;
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input1} and ${input2}` +
+                    `${JSON.stringify(result)} was returned,` +
+                    `when ${expected} was expected.`
+                );
+            }
         }
     );
 });
@@ -348,11 +386,52 @@ describe("Question 6", function () {
 const even_digits = Exam_questions.q7.even_digits;
 describe("Question 7", function () {
     it(
-        "Define and implement your own tests for this question",
+        "Given two digits a and b, where b > a, returns the list of numbers with even digits between a and b.",
         function () {
-            throw new Error(
-                "Define and implement your own tests for this question"
-            );
+            const input1 = 2;
+            const input2 = 27;
+            const result = even_digits(input1, input2);
+            const expected = [2, 4, 6, 8, 20, 22, 24, 26];
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                );
+            }
+        }
+    );
+    it(
+        "An empty range (a > b) returns an empty array.",
+        function () {
+            const input1 = 27;
+            const input2 = 2;
+            const result = even_digits(input1, input2);
+            const expected = [];
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                );
+            }
+        }
+    );
+});
+
+const age_question = Exam_questions.q8.age_question;
+describe("Question 8", function () {
+    it(
+        "Given two input arguments 'name' and 'age', returns the string, ``Hello ${name}, is your age ${age}?``.",
+        function () {
+            const input1 = "Oscar Piastri";
+            const input2 = 23;
+            const result = age_question(input1, input2);
+            const expected = "Hello Oscar Piastri, is your age 23?";
+            if (!R.equals(result, expected)) {
+                throw new Error(
+                    `For an input of ${input}, ${result} was returned,` +
+                    `when ${expected} was expected`
+                );
+            }
         }
     );
 });

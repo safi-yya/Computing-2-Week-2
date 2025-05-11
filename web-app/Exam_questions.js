@@ -27,6 +27,16 @@ const Exam_questions = {
  * @example shortest_word(["hello", "cat", "ok", "12345"]) // "ok";
  */
 Exam_questions.q1.shortest_word = function (word_array) {
+    let index = 0;
+    let output;
+    let short = 0;
+    for (let i = 0; i < word_array.length-1; i++){
+        if (word_array[i+1].length < word_array[i].length){
+            short = word_array[i+1].length;
+            output = word_array[i+1];
+        }
+    }
+    return output;
 };
 
 /**
@@ -40,6 +50,16 @@ Exam_questions.q1.shortest_word = function (word_array) {
  * @example sum_of_numbers(["hello", "cat", 2, true, 17, undefined]) // 19;
  */
 Exam_questions.q2.sum_of_numbers = function (array_of_any_type) {
+    let sum = 0;
+    for (let i = 0; i < array_of_any_type.length; i++){
+        if (typeof array_of_any_type[i] == "number"){
+            sum += array_of_any_type[i];
+        }
+    }
+    if (Number.isNaN(sum)){
+        return 0
+    }
+    return sum;
 };
 
 /**
@@ -64,6 +84,21 @@ Exam_questions.q2.sum_of_numbers = function (array_of_any_type) {
  *   // "never odd or even"
  */
 Exam_questions.q3.longest_palindrome = function (string_array) {
+    let palindrome; //= ""
+    let pallen = 0;
+    let string1;
+    let string2;
+    for (let i = 0; i < string_array.length; i++){
+        string1 = string_array[i].replace(/\s+/g, "");
+        string2 = string1.split("").reverse().join("");
+        if (string1 === string2){
+            if (string1.length > pallen){
+                palindrome = string_array[i];
+                pallen = string1.length;
+            }
+        }
+    }
+    return palindrome;
 };
 
 /**
@@ -78,6 +113,14 @@ Exam_questions.q3.longest_palindrome = function (string_array) {
  * @example perfect_squares(2, 16) // [4, 9, 16]
  */
 Exam_questions.q4.perfect_squares = function (a, b) {
+    let nums = [];
+    for (let i = a; i <= b; i++){
+        if (Number.isInteger((Math.sqrt(i)))){
+            nums.push(i);
+        }
+    }
+    console.log(nums)
+    return nums;
 };
 
 /**
@@ -94,6 +137,11 @@ Exam_questions.q4.perfect_squares = function (a, b) {
  *   // {"numbers": [1, 3, 5, 6], "powers": [1, 9, 25, 36]}
  */
 Exam_questions.q5.power_object = function (numbers, exponent) {
+    let object_dict = {"numbers":numbers, "powers":[]};
+    for (let i = 0; i < object_dict["numbers"].length; i++){
+        object_dict["powers"].push(object_dict["numbers"][i]**exponent)
+    }
+    return object_dict
 };
 
 /**
@@ -111,7 +159,34 @@ Exam_questions.q5.power_object = function (numbers, exponent) {
  * @example missing_character("hello", "hellon") // "n"
  * @example missing_character("hello", "hellonn") // undefined
  */
+Exam_questions.q6.missing_char = function (short_string, long_string) {
+    let sorted1 = short_string.split("").sort();
+    let sorted2 = long_string.split("").sort();
+    let extralen = 0;
+    let letter;
+    for (let i = 0; i <= sorted1.length; i++){
+        if (sorted1[i] != sorted2[i]){
+            extralen += 1;
+            letter = sorted1[i];
+        }
+    }
+};
+
 Exam_questions.q6.missing_character = function (short_string, long_string) {
+    let sorted1 = short_string.split("");
+    let sorted2;
+    if (long_string.length == short_string.length+1){
+        sorted2 = long_string.split("");
+        for (let i = 0; i < sorted1.length; i++) {
+            let index = sorted2.indexOf(sorted1[i]);
+            if (index !== -1) {
+                sorted2.splice(index, 1); // remove the first match
+            }
+        }
+    } else {
+        return sorted2;
+    }
+    return sorted2[0];
 };
 
 /**
@@ -126,6 +201,16 @@ Exam_questions.q6.missing_character = function (short_string, long_string) {
  * @example even_digits(2, 27) // [2, 4, 6, 8, 20, 22, 24, 26]
  */
 Exam_questions.q7.even_digits = function (a, b) {
+    let nums = [];
+
+    for (let i = a; i < b; i++) {
+        let digits = i.toString().split("");
+        if (digits.every(d => +d % 2 === 0)) {
+            nums.push(i);
+        }
+    }
+    console.log(nums)
+    return nums;
 };
 
 /**
